@@ -1,6 +1,8 @@
 package be.ehb.jfcafemenu.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,9 @@ public class Drink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank
     private String name;
+    @DecimalMin(value = "0.5")
     private Double price;
 
     @OneToMany(mappedBy = "drink")

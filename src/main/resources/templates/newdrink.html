@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{menutemplate::header('index')}" >
+</head>
+<body>
+
+    <nav th:insert="~{menutemplate::navbar}" />
+
+    <div id="container">
+    <h1>Create a drink</h1>
+    <form method="post" th:action="@{~/newdrink}" th:object="${drinkToSave}">
+        name: <input type="text" th:field="*{name}">
+        <br>
+        price: <input type="number" th:field="*{price}">
+        <br>
+        <span th:if="${#fields.hasErrors()}" th:text="${#fields.allErrors()}" th:class="error_text"></span>
+        <button th:field="submit">Submit</button>
+    </form>
+    </div>
+
+
+</body>
+</html>
